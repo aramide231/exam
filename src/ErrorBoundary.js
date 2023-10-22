@@ -1,27 +1,31 @@
-import React, { Component } from 'react';
-import ErrorPage from './ErrorPage';
+import React from "react";
 
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, triggerError: false };
+class ErrorBoundary extends React.Component {
+  state = {
+    hasError: true,
+    errorMessage: "error",
+  };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, errorMessage: error };
   }
 
   componentDidCatch(error, info) {
-    this.setState({ hasError: true });
-    console.error(error);
+    console.log(error, info);
   }
 
-  // Allow errors to be triggered explicitly
-  triggerError = () => {
-    this.setState({ triggerError: true });
-  };
-
   render() {
-    if (this.state.hasError || this.state.triggerError) {
-      return <ErrorPage />;
+    if (this.state.hasError) {
+      return [
+        <section className="test-error-page">
+          <h1 className="test-error">Welcome to my Exam</h1>
+          <p className="body-text">oops....</p>
+          <a href="./" className="test-error-btn-container">
+            <button className="test-error-btn">Take me home</button>
+          </a>
+        </section>
+      ];  
     }
-
     return this.props.children;
   }
 }

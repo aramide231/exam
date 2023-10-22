@@ -1,10 +1,9 @@
-import React, { useState,   useEffect } from 'react';
-import './style.css';
-import useCounter from './useCounter';
+import React from "react";
 
 function Loader() {
-    return  <div className="loader"></div>
-  }
+  return (
+    <div className="loader"></div>
+  );
+}
 
-
-export default Loader  
+export default Loader;

@@ -15,6 +15,6 @@ const useCounter = (initialValue = 0) => {
     reset,
     setValue,
   };
-};
+}
 
 export default useCounter;

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './style.css';
 import useCounter from './useCounter';
+import Ages from './Ages';
+import NotFoundPage from './404';
+import Header from "./Header";
 
-function Content() {
+function Counter() {
   const { count, increment, decrement, reset, setValue } = useCounter(0);
   const [figure, setFigure] = useState('');
 
@@ -29,13 +32,13 @@ function Content() {
     setFigure(event.target.value);
   };
 
-  const triggerError = () => {
-    // Simulate an error
-    throw new Error('Test error');
-  };
+
+    
+
 
   return (
     <section className="center">
+      <Header/>
       <h1 className="people">{count}</h1>
       <h1 className="handle">
         <button onClick={handleIncrement}>increment</button>
@@ -52,10 +55,17 @@ function Content() {
         <button className="submit" onClick={appendFigure}>
           append
         </button>
-        <button onClick={triggerError}>Trigger Error</button>
-      </section>
+      
+      </section> 
+     
+        <Ages/>
+    
+      
+      <a href="./update">Error 404</a>
     </section>
+       
+    
   );
 }
 
-export default Content;
+export default Counter;
